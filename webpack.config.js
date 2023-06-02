@@ -1,13 +1,14 @@
 var path = require('path')
 var webpack = require('webpack')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'build.js',
-    library: 'vueTodoList',
+    filename: 'datePicker.min.js',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
@@ -16,9 +17,13 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'vue-style-loader',
+          'style-loader',
           'css-loader'
         ],
+      },
+      {
+        test: /\.scss$/,
+        loader: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.vue$/,
@@ -68,10 +73,21 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
+    new UglifyJsPlugin({
+      "uglifyOptions":
+      {
+        compress: {
+          warnings: false
+        },
+        sourceMap: true
+      }
+    }),
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        safe: true,
+        map: {
+          inline: false
+        }
       }
     }),
     new webpack.LoaderOptionsPlugin({
