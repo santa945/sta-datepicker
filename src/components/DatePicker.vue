@@ -501,18 +501,15 @@ export default {
   width: 60%;
   display: flex;
   justify-content: center;
-
-  input {
-    &:hover {
-      background: #eee;
-    }
-    &:nth-child(1) {
-      width: 50px;
-    }
-    &:nth-child(2) {
-      width: 30px;
-    }
-  }
+}
+.day-select .day-cur input:hover {
+  background: #eee;
+}
+.day-select .day-cur input:nth-child(1) {
+  width: 50px;
+}
+.day-select .day-cur input:nth-child(2) {
+  width: 30px;
 }
 
 .day-screen {
@@ -545,11 +542,11 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 15px;
-  &:hover {
-    font-weight: 700;
-    background-color: #409eff;
-    color: #fff;
-  }
+}
+.day-screen .day-content .day-content-item span:hover {
+  font-weight: 700;
+  background-color: #409eff;
+  color: #fff;
 }
 .day-screen .day-content .day-content-item .active {
   font-weight: 700;
