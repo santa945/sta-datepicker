@@ -1,8 +1,8 @@
 {
   "name": "sta-datepicker",
   "description": "a vue component of date picker",
-  "version": "1.0.4",
-  "author": "santa",
+  "version": "1.0.5",
+  "author": "santa945",
   "license": "MIT",
   "private": false,
   "main": "./dist/datePicker.min.js",

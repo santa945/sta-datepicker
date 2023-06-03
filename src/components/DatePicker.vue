@@ -328,11 +328,9 @@ export default {
       const clsName = e.target.className // 通过类名判断当前是什么状态
       if (clsName.includes("activeRange")) {
         // 点击了范围内的数据，需要剔除
-        console.log("点击了范围内的数据，需要剔除")
         arr = arr.filter((i) => i !== curSelectTimeStamp)
       } else if (clsName.includes("active") && !clsName.includes("activeRange")) {
         // 点击了一个半选状态的日期，准备扩展范围或者单选一个
-        console.log("点击了一个半选状态的日期，准备扩展范围或者单选一个")
         if (this.selctDate.length) {
           const itemTime = arr[0]
           const itemTime2 = arr[arr.length - 1]
@@ -345,7 +343,6 @@ export default {
             console.log("点击了范围内的空白，直接加上一个")
           }
           arr = [...arr, curSelectTimeStamp]
-          console.log(arr)
         } else {
           // 第一次选择日期，而且双击了，直接单独确定这个
           arr = [curSelectTimeStamp]
@@ -353,9 +350,7 @@ export default {
         // 此时选择完日前了，半选的日期消费掉了，清空
         this.partialSelect = null
       } else {
-        console.log("不是半选情况")
-
-        // 即没有点击范围内，又不是半选状态，可能是已经存在一个半选，等待这个日期来闭合范围，也可能是第一次打开点击
+        // 不是半选情况 即没有点击范围内，又不是半选状态，可能是已经存在一个半选，等待这个日期来闭合范围，也可能是第一次打开点击
         if (this.partialSelect) {
           // 需要和已存在的半选态日期闭合
           const itemTime = new Date(this.partialSelect).getTime()
@@ -393,9 +388,7 @@ export default {
         preMonthDay = this.monthDay[11]
       } else {
         preMonthDay = this.monthDay[this.month - 2]
-      }
-      console.log("preMonthDay", this.monthDay[11], this.month)
-
+      };
       for (let i = 0; i < preMonthDay; i++) {
         this.previousMonth[i] = i + 1
       }
@@ -403,7 +396,6 @@ export default {
         this.previousMonth = this.previousMonth.slice(-7)
       } else {
         this.previousMonth = this.previousMonth.slice(-firstWeek)
-        console.log(33, this.previousMonth)
       }
 
       // 渲染下个月, 最后一行
